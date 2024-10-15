@@ -27,7 +27,7 @@ password=$SMBPW
 EOF
 
 mkdir /mnt/$PSHARE #create mount for photo share
-
+mount -a #mount drives
 
 # Start containers
 docker-compose up -d
