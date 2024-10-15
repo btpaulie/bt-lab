@@ -3,7 +3,7 @@ services:
   photoprism:
     env_file: "photoprism.env"
     image: photoprism/photoprism:latest
-        stop_grace_period: 10s
+    stop_grace_period: 10s
     depends_on:
       - mariadb
     security_opt:
