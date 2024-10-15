@@ -12,8 +12,8 @@ services:
     ports:
       - "2342:2342" # HTTP port (host:container)
     environment:
-      PHOTOPRISM_ADMIN_USER: "${PP_ADMIN}"                 # admin login username
-      PHOTOPRISM_ADMIN_PASSWORD: "${PP_PW}"             # initial admin password (8-72 characters)
+      PHOTOPRISM_ADMIN_USER: "${PP_ADMIN}"           # admin login username
+      PHOTOPRISM_ADMIN_PASSWORD: "${PP_PW}"          # initial admin password (8-72 characters)
       PHOTOPRISM_AUTH_MODE: "password"               # authentication mode (public, password)
       PHOTOPRISM_SITE_URL: "http://localhost:2342/"  # server URL in the format "http(s)://domain.name(:port)/(path)"
       PHOTOPRISM_DISABLE_TLS: "false"                # disables HTTPS/TLS even if the site URL starts with https:// and a certificate is available
@@ -42,10 +42,10 @@ services:
       PHOTOPRISM_DATABASE_USER: "${DB_USER}"         # MariaDB or MySQL database user name
       PHOTOPRISM_DATABASE_PASSWORD: "${DB_PW}"       # MariaDB or MySQL database user password
       PHOTOPRISM_SITE_CAPTION: "AI-Powered Photos App"
-      PHOTOPRISM_SITE_DESCRIPTION: ""                # meta site description
-      PHOTOPRISM_SITE_AUTHOR: ""                     # meta site author
+      PHOTOPRISM_SITE_DESCRIPTION: "Paul's Photos"                # meta site description
+      PHOTOPRISM_SITE_AUTHOR: "Paul Gustavsen"                     # meta site author
       ## Video Transcoding (https://docs.photoprism.app/getting-started/advanced/transcoding/):
-      # PHOTOPRISM_FFMPEG_ENCODER: "software"        # H.264/AVC encoder (software, intel, nvidia, apple, raspberry, or vaapi)
+      PHOTOPRISM_FFMPEG_ENCODER: "nvidia"        # H.264/AVC encoder (software, intel, nvidia, apple, raspberry, or vaapi)
       # PHOTOPRISM_FFMPEG_SIZE: "1920"               # video size limit in pixels (720-7680) (default: 3840)
       # PHOTOPRISM_FFMPEG_BITRATE: "32"              # video bitrate limit in Mbit/s (default: 50)
       ## Run/install on first startup (options: update https gpu tensorflow davfs clitools clean):
