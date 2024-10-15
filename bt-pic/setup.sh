@@ -18,7 +18,7 @@ read -p "Photo server username:" SMBUSR
 read -p "Photo server password:" SMBPW
 
 cat <<EOF > /etc/fstab
-//$IPV4/$PSHARE /mnt/$PSHARE cifs credentials=/etc/.smbcredentials,uid=1000,gid=1000 0 0 
+//$IPV4/$PSHARE /mnt/$PSHARE cifs credentials=/etc/.cred,uid=1000,gid=1000 0 0 
 EOF
 
 cat <<EOF > /etc/.cred
