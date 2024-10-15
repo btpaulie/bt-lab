@@ -12,7 +12,7 @@ services:
       - "2342:2342" # HTTP port (host:container)
     environment:
       PHOTOPRISM_ADMIN_USER: "admin"                 # admin login username
-      PHOTOPRISM_ADMIN_PASSWORD: "login"          # initial admin password (8-72 characters)
+      PHOTOPRISM_ADMIN_PASSWORD: "login"             # initial admin password (8-72 characters)
       PHOTOPRISM_AUTH_MODE: "password"               # authentication mode (public, password)
       PHOTOPRISM_SITE_URL: "http://localhost:2342/"  # server URL in the format "http(s)://domain.name(:port)/(path)"
       PHOTOPRISM_DISABLE_TLS: "false"                # disables HTTPS/TLS even if the site URL starts with https:// and a certificate is available
@@ -70,8 +70,6 @@ services:
     volumes:
       # "/host/folder:/photoprism/folder"                # Example
       - "/media/photo:/photoprism/originals"               # Original media files (DO NOT REMOVE)
-      # - "/example/family:/photoprism/originals/family" # *Additional* media folders can be mounted like this
-      # - "~/Import:/photoprism/import"                  # *Optional* base folder from which files can be imported to originals
       - "./storage:/photoprism/storage"                  # *Writable* storage folder for cache, database, and sidecar files (DO NOT REMOVE)
 
   ## Database Server (recommended)
@@ -92,10 +90,10 @@ services:
     environment:
       MARIADB_AUTO_UPGRADE: "1"
       MARIADB_INITDB_SKIP_TZINFO: "1"
-      MARIADB_DATABASE: "photoprism"
-      MARIADB_USER: "photoprism"
-      MARIADB_PASSWORD: "insecure"
-      MARIADB_ROOT_PASSWORD: "insecure"
+      MARIADB_DATABASE: "photoprism" 
+      MARIADB_USER: "photoprism" # REPLACE WITH REAL USERNAME
+      MARIADB_PASSWORD: "insecure" # REPLACE WITH REAL PASSWORD
+      MARIADB_ROOT_PASSWORD: "insecure" # REPLACE WITH REAL PASSWORD
 
   ## Watchtower upgrades services automatically (optional)
   ## see https://docs.photoprism.app/getting-started/updates/#watchtower
