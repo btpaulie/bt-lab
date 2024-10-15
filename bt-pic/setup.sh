@@ -10,15 +10,24 @@ curl -O https://raw.githubusercontent.com/btpaulie/bt-lab/refs/heads/main/bt-pic
 curl -O https://raw.githubusercontent.com/btpaulie/bt-lab/refs/heads/main/bt-pic/.env
 nano .env
 
-# Create mount directory
-mkdir /mnt/photo
-
-# Edit fstab
+# Set up drive mounts
 
 read -p "Photo server ipv4 address:" IPV4
 read -p "Photo server photo share:" PSHARE
+read -p "Photo server username:" SMBUSR
+read -p "Photo server password:" SMBPW
 
-cat eof
+cat <<EOF > /etc/fstab
+//$IPV4/$PSHARE /mnt/$PSHARE cifs credentials=/etc/.smbcredentials,uid=1000,gid=1000 0 0 
+EOF
+
+cat <<EOF > /etc/.cred
+username=$SMBUSER
+password=$SMBPW
+EOF
+
+mkdir /mnt/$PSHARE #create mount for photo share
+
 
 # Start containers
 docker-compose up -d
