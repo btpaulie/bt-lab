@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:unstable
+    container_name: jellyfin
+    user: 0:0
+    network_mode: 'host'
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - ./config:/config
+      - ./cache:/cache
+      - /mnt/music:/media
+      - /mnt/soundtracks:/mnt/soundtracks
+    restart: 'unless-stopped'
