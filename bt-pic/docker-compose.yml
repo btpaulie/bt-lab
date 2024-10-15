@@ -1,7 +1,6 @@
 version: '3.5'
 services:
   photoprism:
-    env_file: "./photoprism.env"
     image: photoprism/photoprism:latest
     stop_grace_period: 10s
     depends_on:
