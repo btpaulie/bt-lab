@@ -1,6 +1,7 @@
 version: '3.5'
 services:
   photoprism:
+    env_file: "photoprism.env"
     image: photoprism/photoprism:latest
         stop_grace_period: 10s
     depends_on:
@@ -38,8 +39,8 @@ services:
       PHOTOPRISM_DATABASE_DRIVER: "mysql"            # use MariaDB 10.5+ or MySQL 8+ instead of SQLite for improved performance
       PHOTOPRISM_DATABASE_SERVER: "mariadb:3306"     # MariaDB or MySQL database server (hostname:port)
       PHOTOPRISM_DATABASE_NAME: "photoprism"         # MariaDB or MySQL database schema name
-      PHOTOPRISM_DATABASE_USER: "photoprism"         # MariaDB or MySQL database user name
-      PHOTOPRISM_DATABASE_PASSWORD: "insecure"       # MariaDB or MySQL database user password
+      PHOTOPRISM_DATABASE_USER: "${DB_USER}"         # MariaDB or MySQL database user name
+      PHOTOPRISM_DATABASE_PASSWORD: "${DB_PW}"       # MariaDB or MySQL database user password
       PHOTOPRISM_SITE_CAPTION: "AI-Powered Photos App"
       PHOTOPRISM_SITE_DESCRIPTION: ""                # meta site description
       PHOTOPRISM_SITE_AUTHOR: ""                     # meta site author
@@ -91,9 +92,9 @@ services:
       MARIADB_AUTO_UPGRADE: "1"
       MARIADB_INITDB_SKIP_TZINFO: "1"
       MARIADB_DATABASE: "photoprism" 
-      MARIADB_USER: "photoprism" # REPLACE WITH REAL USERNAME
-      MARIADB_PASSWORD: "insecure" # REPLACE WITH REAL PASSWORD
-      MARIADB_ROOT_PASSWORD: "insecure" # REPLACE WITH REAL PASSWORD
+      MARIADB_USER: "${DB_USER}" # REPLACE WITH REAL USERNAME
+      MARIADB_PASSWORD: "${DB_PW}" # REPLACE WITH REAL PASSWORD
+      MARIADB_ROOT_PASSWORD: "${DB_ROOT}" # REPLACE WITH REAL PASSWORD
 
   ## Watchtower upgrades services automatically (optional)
   ## see https://docs.photoprism.app/getting-started/updates/#watchtower
