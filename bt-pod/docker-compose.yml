@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    restart: always
+    security_opt:
+      - apparmor:unconfined
+    ports:
+      - 13378:80
+    volumes:
+      - /mnt/ab:/audiobooks
+      - /mnt/pod:/podcasts
+      - ./config:/config
+      - ./:/metadata
