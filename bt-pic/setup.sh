@@ -22,7 +22,7 @@ cat <<EOF > /etc/fstab
 EOF
 
 cat <<EOF > /etc/.cred
-username=$SMBUSER
+username=$SMBUSR
 password=$SMBPW
 EOF
 
