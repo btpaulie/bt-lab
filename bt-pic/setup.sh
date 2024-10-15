@@ -11,16 +11,17 @@ curl -O https://raw.githubusercontent.com/btpaulie/bt-lab/refs/heads/main/bt-pic
 nano .env
 
 # Set up drive mounts
-
 read -p "Photo server ipv4 address:" IPV4
 read -p "Photo server photo share:" PSHARE
 read -p "Photo server username:" SMBUSR
 read -p "Photo server password:" SMBPW
 
+# Create fstab
 cat <<EOF > /etc/fstab
 //$IPV4/$PSHARE /mnt/$PSHARE cifs credentials=/etc/.cred,uid=1000,gid=1000 0 0 
 EOF
 
+# Create credential file
 cat <<EOF > /etc/.cred
 username=$SMBUSR
 password=$SMBPW
