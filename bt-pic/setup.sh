@@ -2,8 +2,12 @@
 
 # Script intended to be run as root.
 
+# Install dependencies
+
+apt install curl -y && apt install cifs-utils -y
+
 # Create directory
-mkdir /srv/photoprism && cd /srv/photoprism
+mkdir /srv/photoprism && cd /sSrv/photoprism
 
 # Curl compose.yml & .env
 curl -O https://raw.githubusercontent.com/btpaulie/bt-lab/refs/heads/main/bt-pic/docker-compose.yml
