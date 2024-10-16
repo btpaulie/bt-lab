@@ -5,4 +5,4 @@ Documentation &amp; CaaS for my homelab
 | --- | --- | --- | 
 | bt-pic | Photoprism | - | 
 | bt-pod | Audiobookshelf | Podcasts, audiobooks |
-| bt-tune | Jellyfin | Music, soundtraks 
+| [bt-tune](https://github.com/btpaulie/bt-lab/tree/main/bt-tune) | Jellyfin | Music, soundtraks 
