@@ -7,22 +7,22 @@ DEPEND () {
     apt install curl -y && apt install cifs-utils -y
 }
 
-DIRCREATE () {
-    mkdir /srv/photoprism && cd /Srv/photoprism
-    mkdir /mnt/$PSHARE
-    mount -a
+GET_VAR () {
+    read -p "Photo server ipv4 address:" IPV4
+    read -p "Photo server photo share:" PSHARE
+    read -p "Photo server username:" SMBUSR
+    read -p "Photo server password:" SMBPW
 }
 
-PULL_FILES () {
+DIR_PULL () {
+    mkdir /srv/photoprism
+    mkdir /mnt/$PSHARE
+    cd /srv/photoprism
     curl -O https://raw.githubusercontent.com/btpaulie/bt-lab/refs/heads/main/bt-pic/docker-compose.yml
     curl -O https://raw.githubusercontent.com/btpaulie/bt-lab/refs/heads/main/bt-pic/.env
 }
 
 SMB_SETUP () {
-    read -p "Photo server ipv4 address:" IPV4
-    read -p "Photo server photo share:" PSHARE
-    read -p "Photo server username:" SMBUSR
-    read -p "Photo server password:" SMBPW
     cat <<EOF > /etc/fstab
     //$IPV4/$PSHARE /mnt/$PSHARE cifs credentials=/etc/.cred,uid=1000,gid=1000 0 0
 EOF
@@ -30,6 +30,7 @@ EOF
     username=$SMBUSR
     password=$SMBPW
 EOF
+    mount -a
 }
 
 CONTAINER_RUN () {
@@ -40,9 +41,9 @@ CONTAINER_RUN () {
 
 # Run 
 DEPEND #install dependencies
-PULL_FILES #curl compose & .env
-SMB_SETUP #get server IP, share name, username, password; mount drive in /mnt
-DIRCREATE #create photoprism dir, cd to it, create mount, mount
+GET_VAR #get variables from user
+DIR_PULL #make directories, curl compose & .env
+SMB_SETUP #edit fstab, edit credential file, mount drives
 CONTAINER_RUN #run container, load `docker stats`
 
 
