@@ -9,7 +9,7 @@ Documentation &amp; CaaS for my homelab.
 | bt-pod | Audiobookshelf | Podcasts, audiobooks | [Audiobookshelf](https://github.com/advplyr/audiobookshelf-app) |
 | bt-tune| Jellyfin | Music, soundtraks | [Symfonium (Android - paid)](https://symfonium.app/)
 | bt-nxtc| Nextcloud | Storage frontend | 
-| bt-dns1 | Pihole; DNS | DNS server + adblock | 
-| bt-jfin | Jellyfin | Movies, TV | 
+| bt-dns1 | Pihole; DNS | DNS server + adblock | Web
+| bt-jfin | Jellyfin | Movies, TV | [Findroid](https://github.com/jarnedemeulemeester/findroid) | 
 
 ##
