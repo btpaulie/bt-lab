@@ -13,10 +13,10 @@
     - name: cifs-utils install
       ansible.builtin.apt:
         name: cifs-utils
-        
+
     - name: Posix mounting
       mount:
-        src: //192.168.86.40/media
+        src: //bt-nas/media
         path: /home/bt/mnt/media
         opts: "rw,credentials=/home/bt/.cred"
         state: mounted
