@@ -1,0 +1,6 @@
+---
+- name: Write 'hello world' to a file
+  hosts: test
+  become_user: bt
+  become: yes
+  tasks:

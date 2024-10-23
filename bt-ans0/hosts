@@ -1,0 +1,7 @@
+[dns_servers]
+bt-dns1
+bt-dns2
+
+[media_servers]
+bt-jfin0
+bt-tune
