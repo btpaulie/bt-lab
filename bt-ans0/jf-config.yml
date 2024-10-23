@@ -1,0 +1,28 @@
+---
+- name: Install jellyfin
+  hosts: media_servers
+  become_user: bt
+  become: yes
+  vars_prompt:
+    - name: "username"
+      prompt: "Enter SMB auth. username."
+      private: yes
+    - name: "password"
+      prompt: "Enter SMB auth. password."
+      private: yes
+  tasks:
+    - name: Install dependencies
+    - name: Posix mounting
+      ansible.posix.mount:
+        src: //bt-nas/media
+        path: /mnt/media
+        opts: "rw,vers=3,file_mode=0600,dir_mode=0700,username={{ username }},password={{ password }}"
+        state: mounted
+        fstype: cifs
+    - name: Mount drive and confirm
+      mount:
+        path: /mnt/media
+        src: 
+
+    - name: Install Jellyfin
+      ansible.builtin.shell: curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash
