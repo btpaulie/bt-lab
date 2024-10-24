@@ -2,13 +2,13 @@
 - name: Install jellyfin
   hosts: test
   become: true
-#  vars_prompt:
-#    - name: "username"
-#      prompt: "Enter SMB auth. username."
-#      private: yes
-#    - name: "password"
-#      prompt: "Enter SMB auth. password."
-#      private: yes
+  vars_prompt:
+    - name: "username"
+      prompt: "Enter SMB auth. username."
+      private: yes
+    - name: "password"
+      prompt: "Enter SMB auth. password."
+      private: yes
   tasks:
     - name: cifs-utils install
       ansible.builtin.apt:
@@ -16,12 +16,18 @@
     - name: curl install
       ansible.builtin.apt:
         name: curl
-    - name: docker-compose install?
+    - name: docker-compose install
       ansible.builtin.apt:
         name: docker-compose
-    - name: docker
+    - name: docker install
       ansible.builtin.apt:
         name: docker
+    - name: Write credentials
+      copy:
+        content: |
+          username={{ username }}
+          password={{ password }}
+        dest: /home/bt/.cred
     - name: Posix mounting
       mount:
         src: //bt-nas/media
