@@ -15,4 +15,10 @@ sudo add-apt-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible
 ```
 
+## SSH Keys
 
+```
+ssh-keygen -t rsa -b 4096 -C "loginName"
+```
+
+```
