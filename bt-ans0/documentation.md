@@ -22,7 +22,9 @@ ssh-keygen -t rsa -b 4096 -C "loginName"
 ```
 Example: `ssh-keygen -t rsa 4096 bt@bt-jf1.local`
 
+---
+
 ```bash
 ssh-copy-id user@<remote host>
 ```
-Example `ssh-copy-id bt@bt-jf1`
+Example: `ssh-copy-id bt@bt-jf1`
