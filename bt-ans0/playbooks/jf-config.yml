@@ -13,7 +13,15 @@
     - name: cifs-utils install
       ansible.builtin.apt:
         name: cifs-utils
-
+    - name: curl install
+      ansible.builtin.apt:
+        name: curl
+    - name: docker-compose install?
+      ansible.builtin.apt:
+        name: docker-compose
+    - name: docker
+      ansible.builtin.apt:
+        name: docker
     - name: Posix mounting
       mount:
         src: //bt-nas/media
@@ -21,7 +29,10 @@
         opts: "rw,credentials=/home/bt/.cred"
         state: mounted
         fstype: cifs
-    
-    - name: Install jf
-      ansible.builtin.shell:
-      cmd: "diff <( curl -s https://repo.jellyfin.org/install-debuntu.sh -o install-debuntu.sh; sha256sum install-debuntu.sh ) <( curl -s https://repo.jellyfin.org/install-debuntu.sh.sha256sum )"
+    - name: Pull compose
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/btpaulie/bt-lab/refs/heads/main/bt-ans0/docker-compose.yml
+        dest: /home/bt/docker-compose.yml
+        mode: '0440'
+    - name: Create and start services
+      ansible.builtin.shell: cd /home/bt && sudo docker-compose up -d
