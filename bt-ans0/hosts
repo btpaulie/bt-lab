@@ -5,3 +5,10 @@ bt-dns2
 [media_servers]
 bt-jfin0
 bt-tune
+
+[pc_nodes]
+bt-dt01
+
+[proxy_servers]
+bt-prxy
+
