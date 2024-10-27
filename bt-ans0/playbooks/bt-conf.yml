@@ -27,4 +27,17 @@
         opts: "rw,credentials=/home/bt/.cred"
         state: mounted
         fstype: cifs
+    - name: Setup SSH
+      ansible.builtin.open_keypair:
+        path: /home/bt/.ssh/bt-bt-tune
+        owner: bt
+        group: bt
+        mode: '0660'
+        type: 4096
+    - name: Copy key to bt-tune
+    ansible.builtin.shell: |
+      ssh-copy-id -i /home/bt/.ssh/bt-bt-tune bt@bt-tune
+    delegate_to: localhost
+    become: false
+    ignore_errors: yes
     
