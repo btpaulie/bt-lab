@@ -10,19 +10,13 @@
       prompt: "Enter SMB auth. password."
       private: yes
   tasks:
-    - name: cifs-utils install
+    - name: Dependencies install
       ansible.builtin.apt:
         name: cifs-utils
-    - name: curl install
-      ansible.builtin.apt:
         name: curl
-    - name: docker-compose install
-      ansible.builtin.apt:
         name: docker-compose
-    - name: docker install
-      ansible.builtin.apt:
         name: docker
-    - name: Write credentials
+     - name: Write credentials
       copy:
         content: |
           username={{ username }}
