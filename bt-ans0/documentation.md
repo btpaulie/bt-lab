@@ -35,7 +35,7 @@ Example: `ssh-copy-id bt@bt-jf1`
 
 ## Hosts file
 
-Default hosts file will be in `/etc/ansible/hosts`. 
+Default hosts file will be in `/etc/ansible/hosts`, copy it from git.
 
 ```bash
 curl -O https://raw.githubusercontent.com/btpaulie/bt-lab/refs/heads/main/bt-ans0/hosts 
@@ -44,3 +44,11 @@ curl -O https://raw.githubusercontent.com/btpaulie/bt-lab/refs/heads/main/bt-ans
 ```bash
 sudo cat hosts > /etc/ansible/hosts
 ```
+
+## SSH config
+
+```bash
+sudo nano ~/.ssh/config
+```
+
+Pull from git. 

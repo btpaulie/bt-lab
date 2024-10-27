@@ -10,4 +10,13 @@ Host bt-jfin
     HostName 192.168.86.48
     User bt
     IdentityFile ~/.ssh/bt-bt-jfin
+Host bt-dns1
+    HostName 192.168.86.3
+    User bt
+    IdentityFile ~/.ssh/bt-bt-dns1
+Host bt-dns2
+    HostName 192.168.86.4
+    User bt
+    IdentityFile ~/.ssh/bt-bt-dns2
+
 
