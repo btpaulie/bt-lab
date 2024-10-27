@@ -1,0 +1,13 @@
+Host bt-nas
+    HostName 192.168.86.40
+    User bt
+    IdentityFile ~/.ssh/bt-bt-nas
+Host bt-tune
+    HostName 192.168.86.44
+    User bt
+    IdentityFile ~/.ssh/bt-bt-tune
+Host bt-jfin
+    HostName 192.168.86.48
+    User bt
+    IdentityFile ~/.ssh/bt-bt-jfin
+
