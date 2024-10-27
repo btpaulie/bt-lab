@@ -1,0 +1,38 @@
+---
+- name: Install jellyfin
+  hosts: test
+  become: true
+  vars_prompt:
+    - name: "username"
+      prompt: "Enter SMB auth. username."
+      private: yes
+    - name: "password"
+      prompt: "Enter SMB auth. password."
+      private: yes
+  tasks:
+    - name: Dependencies install
+      ansible.builtin.apt:
+        name: cifs-utils
+        name: curl
+        name: docker-compose
+        name: docker
+     - name: Write credentials
+      copy:
+        content: |
+          username={{ username }}
+          password={{ password }}
+        dest: /home/bt/.cred
+    - name: Posix mounting
+      mount:
+        src: //bt-nas/media/music
+        path: /home/bt/mnt/media
+        opts: "rw,credentials=/home/bt/.cred"
+        state: mounted
+        fstype: cifs
+    - name: Pull compose
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/btpaulie/bt-lab/refs/heads/main/bt-ans0/docker-compose.yml
+        dest: /home/bt/docker-compose.yml
+        mode: '0440'
+    - name: Create and start services
+      ansible.builtin.shell: cd /home/bt && sudo docker-compose up -d

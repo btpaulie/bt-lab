@@ -9,7 +9,7 @@
     - name: "password"
       prompt: "Enter SMB auth. password."
       private: yes
-  Tasks:
+  tasks:
     - name: Dependencies install
       ansible.builtin.apt:
         name: cifs-utils
@@ -39,5 +39,4 @@
       ssh-copy-id -i /home/bt/.ssh/bt-bt-tune bt@bt-tune
     delegate_to: localhost
     become: false
-    ignore_errors: yes
-    
+    ignore_errors: yes   
