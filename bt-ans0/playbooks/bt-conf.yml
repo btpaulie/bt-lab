@@ -1,0 +1,30 @@
+---
+- name: bt-conf setup
+  hosts: configuration_servers
+  become: true
+  vars_prompt:
+    - name: "username"
+      prompt: "Enter SMB auth. username."
+      private: yes
+    - name: "password"
+      prompt: "Enter SMB auth. password."
+      private: yes
+  Tasks:
+    - name: Dependencies install
+      ansible.builtin.apt:
+        name: cifs-utils
+        name: curl
+    - name: Write credentials to ~/.cred
+      copy:
+        content: |
+          username={{ username }}
+          password={{ password }}
+        dest: /home/bt/.cred
+   - name: Posix mounting - backups
+      mount:
+        src: //bt-nas/backup
+        path: /home/bt/mnt/backup
+        opts: "rw,credentials=/home/bt/.cred"
+        state: mounted
+        fstype: cifs
+    

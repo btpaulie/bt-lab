@@ -6,9 +6,11 @@ bt-dns2
 bt-jfin0
 bt-tune
 
-[pc_nodes]
+[ubuntu_pcs]
 bt-dt01
 
 [proxy_servers]
 bt-prxy
 
+[configuration_servers]
+bt-conf

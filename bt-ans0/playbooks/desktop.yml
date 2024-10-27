@@ -1,0 +1,21 @@
+---
+- name: Install desktop
+  hosts: 
+  become: true 
+  tasks:
+    - name: cifs-utils install
+      ansible.builtin.apt:
+        name: cifs-utils
+    - name: vim install
+      ansible.builtin.apt:
+        name: vim
+    - name: thunderbird install
+      ansible.builtin.apt:
+        name: thunderbird
+    - name: darktable install
+    - name: audiobookshelf install
+    - name: telegram install
+    - name: discord install
+    - name: signal install 
+    - name: obsidian install
+    - name: sonixd install
